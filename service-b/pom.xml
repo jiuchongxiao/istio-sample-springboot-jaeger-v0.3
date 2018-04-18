@@ -50,7 +50,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>${project.build.finalName}</repository>
+                    <repository>192.168.43.50/library/${project.build.finalName}</repository>
                     <tag>v1</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
