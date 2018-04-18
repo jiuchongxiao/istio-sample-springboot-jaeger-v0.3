@@ -1,0 +1,15 @@
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>distribution</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <files>
+        <file>
+            <source>target/service-a-0.0.1.jar</source>
+            <outputDirectory>target/docker/service-a</outputDirectory>
+            <!--<filtered>true</filtered>-->
+        </file>
+    </files>
+</assembly>

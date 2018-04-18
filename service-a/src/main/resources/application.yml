@@ -1,0 +1,12 @@
+---
+
+server:
+  port: 8081
+  servlet:
+    contextPath: "/sa"
+
+
+service:
+  b:
+    url: "http://localhost:8082/sb/info"
+    method: "post"

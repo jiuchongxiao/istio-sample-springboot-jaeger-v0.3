@@ -1,0 +1,15 @@
+---
+
+server:
+  port: 8080
+  servlet:
+    contextPath: "/portal"
+
+
+service:
+  a:
+    url: "http://localhost:8081/sa/info"
+    method: "post"
+  c:
+    url: "http://localhost:8083/sc/info"
+    method: "post"
