@@ -11,6 +11,6 @@ public class ServiceCController {
 
     @GetMapping("/info")
     public String info() {
-        return "C version = v2";
+        return "C version = v3";
     }
 }
