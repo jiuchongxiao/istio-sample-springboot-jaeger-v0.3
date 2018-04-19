@@ -30,10 +30,23 @@
         </dependency>
 
         <dependency>
-            <groupId>com.navercorp.pinpoint</groupId>
-            <artifactId>pinpoint-bootstrap-core</artifactId>
-            <version>1.7.2</version>
-            <scope>provided</scope>
+            <groupId>com.xmm.sample</groupId>
+            <artifactId>istio-zipkin-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <version>1.3.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-core</artifactId>
+            <version>1.3.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-commons</artifactId>
+            <version>1.3.3.RELEASE</version>
         </dependency>
 
     </dependencies>
@@ -51,6 +64,7 @@
                 <executions>
                     <execution>
                         <id>default</id>
+                        <!--<phase>install</phase>-->
                         <goals>
                             <goal>build</goal>
                             <goal>push</goal>
@@ -59,7 +73,7 @@
                 </executions>
                 <configuration>
                     <repository>192.168.43.50/library/${project.build.finalName}</repository>
-                    <tag>v2</tag>
+                    <tag>v3</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>

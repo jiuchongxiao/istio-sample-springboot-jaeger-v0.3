@@ -2,8 +2,7 @@
 
 server:
   port: 8080
-  servlet:
-    contextPath: "/portal"
+  contextPath: "/portal"
 
 
 service:

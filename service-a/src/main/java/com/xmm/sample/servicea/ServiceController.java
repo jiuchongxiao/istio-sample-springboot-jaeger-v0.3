@@ -21,7 +21,7 @@ public class ServiceController {
 
     @GetMapping("/info")
     public String info() {
-        String rsp = "A version = v1,   a service call b service to get b version:------------------> " + notify(url);
+        String rsp = "A version = v1,   ===> " + notify(url);
         log.info(rsp);
         return rsp;
     }

@@ -19,4 +19,6 @@ public class ServiceController {
         log.info(version);
         return version;
     }
+
+
 }

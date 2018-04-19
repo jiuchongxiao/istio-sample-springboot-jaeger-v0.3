@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
     </parent>
 
     <groupId>com.xmm.sample</groupId>
@@ -22,10 +22,11 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <dockerfile-maven-version>1.4.0</dockerfile-maven-version>
-        <brave.version>4.19</brave.version>
+        <!--<brave.version>4.19</brave.version>-->
     </properties>
 
     <modules>
+        <module>istio-zipkin-support</module>
         <module>service-a</module>
         <module>service-b</module>
         <module>service-c</module>
@@ -41,13 +42,10 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
-                <groupId>io.zipkin.brave</groupId>
-                <artifactId>brave-bom</artifactId>
-                <version>${brave.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>com.xmm.sample</groupId>
+                <artifactId>istio-zipkin-support</artifactId>
+                <version>0.0.1</version>
             </dependency>
 
         </dependencies>

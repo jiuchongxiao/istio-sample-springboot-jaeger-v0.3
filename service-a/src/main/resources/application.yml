@@ -2,8 +2,7 @@
 
 server:
   port: 8081
-  servlet:
-    contextPath: "/sa"
+  contextPath: "/sa"
 
 
 service:

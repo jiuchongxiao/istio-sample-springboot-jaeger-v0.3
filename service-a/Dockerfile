@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java:8_jdk
+FROM anapsix/alpine-java:8u172b11_jdk
 
 MAINTAINER Simon Meng <menghot@gmail.com>
 
