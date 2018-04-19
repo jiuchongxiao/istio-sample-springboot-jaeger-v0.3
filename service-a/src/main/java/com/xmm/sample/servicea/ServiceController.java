@@ -21,7 +21,9 @@ public class ServiceController {
 
     @GetMapping("/info")
     public String info() {
-        return "A version = v1,   a service call b service to get b version:------------------> " + notify(url);
+        String rsp = "A version = v1,   a service call b service to get b version:------------------> " + notify(url);
+        log.info(rsp);
+        return rsp;
     }
 
     public String notify(String url) {
@@ -29,7 +31,16 @@ public class ServiceController {
             RestTemplate restTemplate = new RestTemplate();
             return restTemplate.getForObject(url, String.class);
         } catch (RestClientException e) {
+
+//            RestTemplate restTemplate = new RestTemplate();
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+//            HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+//            restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+
             return e.getMessage();
         }
+
+
     }
 }

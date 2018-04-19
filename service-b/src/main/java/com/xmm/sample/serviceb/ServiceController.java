@@ -1,5 +1,7 @@
 package com.xmm.sample.serviceb;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ServiceController {
 
+    private static final Logger log = LoggerFactory.getLogger(ServiceController.class);
+
     @GetMapping("/info")
     public String info() {
-        return "B version = v1";
+        String version = "B version = v1";
+        log.info(version);
+        return version;
     }
 }
