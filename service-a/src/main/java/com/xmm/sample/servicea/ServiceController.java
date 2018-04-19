@@ -12,16 +12,16 @@ import org.springframework.web.client.RestTemplate;
  * Created by simon on 17/04/2018.
  */
 @RestController
-public class ServiceAController {
+public class ServiceController {
 
-    private static final Logger log = LoggerFactory.getLogger(ServiceAController.class);
+    private static final Logger log = LoggerFactory.getLogger(ServiceController.class);
 
     @Value("${service.b.url}")
     private String url;
 
     @GetMapping("/info")
     public String info() {
-        return "A version = v1, " + notify(url);
+        return "A version = v1,   a service call b service to get b version:------------------> " + notify(url);
     }
 
     public String notify(String url) {

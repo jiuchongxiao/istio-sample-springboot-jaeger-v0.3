@@ -46,5 +46,8 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.25" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.navercorp.pinpoint:pinpoint-bootstrap-core:1.7.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.navercorp.pinpoint:pinpoint-annotations:1.7.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.navercorp.pinpoint:pinpoint-commons:1.7.2" level="project" />
   </component>
 </module>

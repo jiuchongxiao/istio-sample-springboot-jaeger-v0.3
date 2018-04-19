@@ -1,220 +1,226 @@
+# Copyright 2017 Istio Authors
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
 ##################################################################################################
-#  service a
-##################################################################################################
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: service-a
-  labels:
-    app: service-a
-spec:
-  ports:
-  - port: 8081
-    name: http
-  selector:
-    app: service-a
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: service-a-v1
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: service-a
-        version: v1
-    spec:
-      containers:
-      - name: service-a
-        image: 192.168.43.50/library/service-a:v1
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: JAVA_OPTS
-          value: "-Dservice.b.url=http://service-b:8082/sb/info"
-        ports:
-        - containerPort: 8081
----
-##################################################################################################
-#  service b
+# Details service
 ##################################################################################################
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-b
+  name: details
   labels:
-    app: service-b
+    app: details
 spec:
   ports:
-  - port: 8082
+  - port: 9080
     name: http
   selector:
-    app: service-b
+    app: details
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: service-b-v1
+  name: details-v1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: service-b
+        app: details
         version: v1
     spec:
       containers:
-      - name: service-b
-        image: 192.168.43.50/library/service-b:v1
+      - name: details
+        image: istio/examples-bookinfo-details-v1:1.5.0
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8082
+        - containerPort: 9080
 ---
 ##################################################################################################
-# Service-c service
+# Ratings service
 ##################################################################################################
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-c
+  name: ratings
   labels:
-    app: service-c
+    app: ratings
 spec:
   ports:
-  - port: 8083
+  - port: 9080
     name: http
   selector:
-    app: service-c
+    app: ratings
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: service-c-v1
+  name: ratings-v1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: service-c
+        app: ratings
         version: v1
     spec:
       containers:
-      - name: service-c
-        image: 192.168.43.50/library/service-c:v1 
+      - name: ratings
+        image: istio/examples-bookinfo-ratings-v1:1.5.0
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8083
+        - containerPort: 9080
+---
+##################################################################################################
+# Reviews service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews
+  labels:
+    app: reviews
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: reviews
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: service-c-v2
+  name: reviews-v1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: service-c
+        app: reviews
+        version: v1
+    spec:
+      containers:
+      - name: reviews
+        image: istio/examples-bookinfo-reviews-v1:1.5.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: reviews-v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: reviews
         version: v2
     spec:
       containers:
-      - name: service-c
-        image: 192.168.43.50/library/service-c:v2 
+      - name: reviews
+        image: istio/examples-bookinfo-reviews-v2:1.5.0
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8083
+        - containerPort: 9080
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: service-c-v3
+  name: reviews-v3
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: service-c
+        app: reviews
         version: v3
     spec:
       containers:
-      - name: service-c
-        image: 192.168.43.50/library/service-c:v3 
+      - name: reviews
+        image: istio/examples-bookinfo-reviews-v3:1.5.0
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8083
-
+        - containerPort: 9080
 ---
 ##################################################################################################
-# Portal services
+# Productpage services
 ##################################################################################################
 apiVersion: v1
 kind: Service
 metadata:
-  name: portal
+  name: productpage
   labels:
-    app: portal
+    app: productpage
 spec:
   ports:
-  - port: 8080
+  - port: 9080
     name: http
   selector:
-    app: portal
+    app: productpage
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: portal-v1
+  name: productpage-v1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: portal
+        app: productpage
         version: v1
     spec:
       containers:
-      - name: portal
-        image: 192.168.43.50/library/portal:v1 
+      - name: productpage
+        image: istio/examples-bookinfo-productpage-v1:1.5.0
         imagePullPolicy: IfNotPresent
-        env:
-        - name: JAVA_OPTS
-          value: "-Dservice.a.url=http://service-a:8081/sa/info -Dservice.c.url=http://service-c:8083/sc/info"
         ports:
-        - containerPort: 8080
-
+        - containerPort: 9080
 ---
-#####################################################################################################
+###########################################################################
 # Ingress resource (gateway)
-#####################################################################################################
+##########################################################################
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: portal-gateway
+  name: gateway
   annotations:
     kubernetes.io/ingress.class: "istio"
 spec:
   rules:
   - http:
       paths:
-      - path: /portal/.*
+      - path: /productpage
+        backend:
+          serviceName: productpage
+          servicePort: 9080
+      - path: /login
+        backend:
+          serviceName: productpage
+          servicePort: 9080
+      - path: /logout
+        backend:
+          serviceName: productpage
+          servicePort: 9080
+      - path: /api/v1/products.*
+        backend:
+          serviceName: productpage
+          servicePort: 9080
+      - path: /portal/*
         backend:
           serviceName: portal
           servicePort: 8080
-
 ---
-#apiVersion: extensions/v1beta1
-#kind: Ingress
-#metadata:
-#  name: portal-ingress
-#  annotations:
-#    nginx.ingress.kubernetes.io/rewrite-target: /portal
-#spec:
-#  rules:
-#  - http:
-#      paths:
-#      - path: /portal
-#        backend:
-#          serviceName: portal
-#          servicePort: 8080

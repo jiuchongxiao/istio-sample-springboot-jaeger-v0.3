@@ -1,12 +1,22 @@
 FROM anapsix/alpine-java:8_jdk
 
-MAINTAINER Simon Meng <mengzl@teligen.com>
+MAINTAINER Simon Meng <menghot@gmail.com>
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/usr/share/myservice/myservice.jar"]
+WORKDIR /
 
 ARG JAR_FILE
-ADD target/${JAR_FILE} /usr/share/myservice/myservice.jar
+ADD target/${JAR_FILE} /work/app.jar
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
 
-EXPOSE 8080
+ENV JAVA_OPTS=""
+
+# Instead run app directly, Run app by a wrapped script will bring some benefits
+# 1. able to accept extenal enviroment variables
+# 2. won't extends the app stop time
+
+ENTRYPOINT ["/run.sh"]
+
+EXPOSE 8082
 
 
