@@ -8,11 +8,9 @@
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>portal</artifactId>
     <properties>
-        <start-class>com.xmm.sample.servicea.App</start-class>
-        <docker.image.prefix>192.168.43.50</docker.image.prefix>
+        <start-class>com.xmm.sample.portal.App</start-class>
     </properties>
 
     <dependencies>
@@ -36,21 +34,21 @@
             <groupId>com.xmm.sample</groupId>
             <artifactId>istio-zipkin-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-            <version>1.3.3.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-core</artifactId>
-            <version>1.3.3.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-commons</artifactId>
-            <version>1.3.3.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+            <!--<version>1.3.3.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-sleuth-core</artifactId>-->
+            <!--<version>1.3.3.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-commons</artifactId>-->
+            <!--<version>1.3.3.RELEASE</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 

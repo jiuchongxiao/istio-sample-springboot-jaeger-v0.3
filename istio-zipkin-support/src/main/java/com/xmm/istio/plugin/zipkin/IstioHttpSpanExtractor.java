@@ -55,6 +55,7 @@ public class IstioHttpSpanExtractor implements HttpSpanExtractor {
             String uri = carrier.get(URI_HEADER);
             boolean skip = Span.SPAN_NOT_SAMPLED.equals(carrier.get(Span.SAMPLED_NAME));
             long spanId = spanId(carrier);
+            log.info("spanId = " + spanId);
             return buildParentSpan(carrier, uri, skip, spanId);
         } catch (Exception e) {
             log.error("Exception occurred while trying to extract span from carrier", e);
@@ -116,12 +117,17 @@ public class IstioHttpSpanExtractor implements HttpSpanExtractor {
         String requestId = carrier.get(IstioTraceHeaderNames.REQUEST_ID_HEADER);
         String spanContext = carrier.get(IstioTraceHeaderNames.SPAN_CONTEXT_HEADER);
         String userAgent = carrier.get(IstioTraceHeaderNames.USER_AGENT);
-        span.baggage(IstioTraceHeaderNames.REQUEST_ID_HEADER, requestId);
-        span.baggage(IstioTraceHeaderNames.SPAN_CONTEXT_HEADER, spanContext);
-        span.baggage(IstioTraceHeaderNames.USER_AGENT, userAgent);
+        if (StringUtils.hasText(spanContext)) {
 
-
-        log.info(span);
+            span.baggage(IstioTraceHeaderNames.REQUEST_ID_HEADER, requestId);
+        }
+        if (StringUtils.hasText(spanContext)) {
+            span.baggage(IstioTraceHeaderNames.SPAN_CONTEXT_HEADER, spanContext);
+        }
+        if (StringUtils.hasText(spanContext)) {
+            span.baggage(IstioTraceHeaderNames.USER_AGENT, userAgent);
+        }
+        log.info("print span info: " + span.toString());
 
         Span spanInstance = span.build();
         return spanInstance;
