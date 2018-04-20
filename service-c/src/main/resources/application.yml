@@ -3,6 +3,8 @@ server:
   port: 8083
   contextPath: "/sc"
 
+app:
+  version: v1
 
 spring:
   sleuth:

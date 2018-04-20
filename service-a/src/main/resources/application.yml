@@ -10,6 +10,8 @@ service:
     url: "http://localhost:8082/sb/info"
     method: "post"
 
+app:
+  version: v1
 
 spring:
   sleuth:

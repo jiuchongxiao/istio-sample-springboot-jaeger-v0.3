@@ -72,8 +72,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>192.168.43.50/library/${project.build.finalName}</repository>
-                    <tag>v1</tag>
+                    <!--<username>menghot</username>-->
+                    <!--<password>Juan\$520</password>-->
+                    <repository>menghot/${project.build.finalName}</repository>
+                    <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>

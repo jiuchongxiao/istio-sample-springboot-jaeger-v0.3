@@ -29,8 +29,11 @@ spec:
     spec:
       containers:
       - name: service-a
-        image: 192.168.43.50/library/service-a:v1
+        image: menghot/service-a:0.0.1
         imagePullPolicy: IfNotPresent
+        env:
+        - name: JAVA_OPTS
+          value: "-Dapp.version=v1"
         env:
         - name: JAVA_OPTS
           value: "-Dservice.b.url=http://service-b:8082/sb/info"
@@ -67,8 +70,11 @@ spec:
     spec:
       containers:
       - name: service-b
-        image: 192.168.43.50/library/service-b:v1
+        image: menghot/service-b:0.0.1
         imagePullPolicy: IfNotPresent
+        env:
+        - name: JAVA_OPTS
+          value: "-Dapp.version=v1"
         ports:
         - containerPort: 8082
 ---
@@ -102,7 +108,7 @@ spec:
     spec:
       containers:
       - name: service-c
-        image: 192.168.43.50/library/service-c:v1 
+        image: menghot/service-c:0.0.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8083
@@ -121,8 +127,11 @@ spec:
     spec:
       containers:
       - name: service-c
-        image: 192.168.43.50/library/service-c:v2 
+        image: menghot/service-c:0.0.1
         imagePullPolicy: IfNotPresent
+        env:
+        - name: JAVA_OPTS
+          value: "-Dapp.version=v2"
         ports:
         - containerPort: 8083
 ---
@@ -140,8 +149,11 @@ spec:
     spec:
       containers:
       - name: service-c
-        image: 192.168.43.50/library/service-c:v3 
+        image: menghot/service-c:0.0.1
         imagePullPolicy: IfNotPresent
+        env:
+        - name: JAVA_OPTS
+          value: "-Dapp.version=v3"
         ports:
         - containerPort: 8083
 
@@ -176,7 +188,7 @@ spec:
     spec:
       containers:
       - name: portal
-        image: 192.168.43.50/library/portal:v1 
+        image: menghot/portal:v1 
         imagePullPolicy: IfNotPresent
         env:
         - name: JAVA_OPTS

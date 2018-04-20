@@ -70,7 +70,6 @@ public class IstioHttpSpanExtractor implements HttpSpanExtractor {
     }
 
     private Span buildParentSpan(Map<String, String> carrier, String uri, boolean skip, long spanId) {
-        log.info("carrier map:" + carrier.toString());
         String traceId = carrier.get(Span.TRACE_ID_NAME);
         Span.SpanBuilder span = Span.builder()
                 .traceIdHigh(traceId.length() == 32 ? Span.hexToId(traceId, 0) : 0)

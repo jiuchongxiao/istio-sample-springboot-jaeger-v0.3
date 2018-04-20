@@ -41,7 +41,6 @@ public class HeaderPropagationRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         for (String header : headersToPropagate) {
             String value = httpServletRequest.getHeader(header);
-            log.info(header + " :----> " + value);
             HeaderPropagationHolder.put(header, value);
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);

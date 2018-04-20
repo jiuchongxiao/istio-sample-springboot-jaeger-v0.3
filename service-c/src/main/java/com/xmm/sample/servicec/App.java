@@ -11,12 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
- *
+ * Created by simon (simon.meng@fox.mal.com) on 17/04/2018.
  */
 @EnableAutoConfiguration
 @SpringBootApplication
-//@ImportResource({"classpath:applicationContext.xml"})
-//@EnableCaching
 public class App {
 
     /**

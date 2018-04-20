@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by simon on 17/04/2018.
+ * Created by simon (simon.meng@fox.mal.com) on 17/04/2018.
  */
 @RestController
 public class ServiceController {
@@ -23,9 +23,12 @@ public class ServiceController {
     @Value("${service.b.url}")
     private String url;
 
+    @Value("${app.version}")
+    private String version;
+
     @GetMapping("/info")
     public String info() {
-        String rsp = "A version = v1,   ===> " + notify(url);
+        String rsp = "A Service version = " + this.version + "  ===> " + notify(url);
         log.info(rsp);
         return rsp;
     }

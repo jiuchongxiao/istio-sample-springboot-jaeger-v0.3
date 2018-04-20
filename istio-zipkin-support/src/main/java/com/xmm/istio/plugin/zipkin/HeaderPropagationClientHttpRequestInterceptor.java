@@ -30,13 +30,9 @@ import java.util.Map;
  */
 public class HeaderPropagationClientHttpRequestInterceptor implements ClientHttpRequestInterceptor {
 
-    private static final Log log = LogFactory.getLog(
-            MethodHandles.lookup().lookupClass());
-
     @Override
     public ClientHttpResponse intercept(HttpRequest httpRequest, byte[] bytes, ClientHttpRequestExecution clientHttpRequestExecution) throws IOException {
         HttpHeaders headers = httpRequest.getHeaders();
-        log.info("----" + httpRequest);
         for (Map.Entry<String, String> entry : HeaderPropagationHolder.entries()) {
             headers.set(entry.getKey(), entry.getValue());
         }

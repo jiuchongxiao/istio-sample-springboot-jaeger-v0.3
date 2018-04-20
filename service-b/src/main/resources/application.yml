@@ -3,4 +3,6 @@ server:
   port: 8082
   contextPath: "/sb"
 
+app:
+  version: v1
 

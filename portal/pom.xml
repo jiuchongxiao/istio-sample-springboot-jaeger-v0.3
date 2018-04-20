@@ -59,10 +59,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <username>admin</username>
-                    <password>Harbor12345</password>
-                    <repository>192.168.43.50/library/${project.build.finalName}</repository>
-                    <tag>v1</tag>
+                    <repository>menghot/${project.build.finalName}</repository>
+                    <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>

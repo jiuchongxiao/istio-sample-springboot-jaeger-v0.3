@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by simon on 17/04/2018.
+ * Created by simon (simon.meng@fox.mal.com) on 17/04/2018.
  */
 @RestController
 public class ServiceController {
@@ -26,6 +26,9 @@ public class ServiceController {
     @Value("${service.c.url}")
     private String cSrvUrl;
 
+    @Value("${app.version}")
+    private String version;
+
     @GetMapping("/info")
     public String info() {
 
@@ -36,7 +39,7 @@ public class ServiceController {
         log.info(srvCrsp);
 
         return String.format("<html>" +
-                "<h3>Portal version=v1</h3><br/>" +
+                "<h3>Portal version="+ this.version +"</h3><br/>" +
                 "<h3>%s</h3><br/>" +
                 "<h3>%s</h3><br/>" +
                 "</html>", srvArsp, srvCrsp);
@@ -59,4 +62,6 @@ public class ServiceController {
             return e.getMessage();
         }
     }
+
+
 }
