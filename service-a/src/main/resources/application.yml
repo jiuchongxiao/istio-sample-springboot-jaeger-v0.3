@@ -9,3 +9,9 @@ service:
   b:
     url: "http://localhost:8082/sb/info"
     method: "post"
+
+
+spring:
+  sleuth:
+    sampler:
+      percentage: "1.0"

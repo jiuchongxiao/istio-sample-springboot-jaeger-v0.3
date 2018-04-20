@@ -15,7 +15,7 @@ public class ServiceController {
 
     @GetMapping("/info")
     public String info() {
-        String version = "C version = v2";
+        String version = "C version = v1";
         log.info(version);
         return version;
     }

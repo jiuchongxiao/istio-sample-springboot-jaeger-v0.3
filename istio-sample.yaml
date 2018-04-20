@@ -191,7 +191,8 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: portal-gateway
+  name: gateway-portal
+  namespace: default
   annotations:
     kubernetes.io/ingress.class: "istio"
 spec:
@@ -202,7 +203,6 @@ spec:
         backend:
           serviceName: portal
           servicePort: 8080
-
 ---
 
 #apiVersion: extensions/v1beta1

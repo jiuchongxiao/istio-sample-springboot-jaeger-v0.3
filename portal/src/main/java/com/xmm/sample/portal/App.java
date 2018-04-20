@@ -9,6 +9,7 @@ import org.springframework.cloud.sleuth.instrument.web.HttpSpanExtractor;
 import org.springframework.cloud.sleuth.instrument.web.HttpSpanInjector;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -34,5 +35,10 @@ public class App {
     @Bean
     HttpSpanExtractor istioHttpSpanExtractor() {
         return new IstioHttpSpanExtractor();
+    }
+
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

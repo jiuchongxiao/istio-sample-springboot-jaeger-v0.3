@@ -4,3 +4,8 @@ server:
   contextPath: "/sc"
 
 
+spring:
+  sleuth:
+    sampler:
+      percentage: "1.0"
+

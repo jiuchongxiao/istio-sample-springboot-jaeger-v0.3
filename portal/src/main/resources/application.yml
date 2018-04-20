@@ -12,3 +12,9 @@ service:
   c:
     url: "http://localhost:8083/sc/info"
     method: "post"
+
+
+spring:
+  sleuth:
+    sampler:
+      percentage: "1.0"

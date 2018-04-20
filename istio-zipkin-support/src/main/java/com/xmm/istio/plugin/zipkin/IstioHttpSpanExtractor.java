@@ -41,12 +41,6 @@ public class IstioHttpSpanExtractor implements HttpSpanExtractor {
     @Override
     public Span joinTrace(SpanTextMap textMap) {
         Map<String, String> carrier = TextMapUtil.asMap(textMap);
-        System.out.println("-------------------------------------------------------------------------------------");
-        for (Map.Entry<String, String> entry : carrier.entrySet()) {
-            System.out.println(entry.getKey() + "  ----------------> " + entry.getValue());
-        }
-
-
         if (carrier.get(Span.TRACE_ID_NAME) == null) {
             // can't build a Span without trace id
             return null;
@@ -55,7 +49,6 @@ public class IstioHttpSpanExtractor implements HttpSpanExtractor {
             String uri = carrier.get(URI_HEADER);
             boolean skip = Span.SPAN_NOT_SAMPLED.equals(carrier.get(Span.SAMPLED_NAME));
             long spanId = spanId(carrier);
-            log.info("spanId = " + spanId);
             return buildParentSpan(carrier, uri, skip, spanId);
         } catch (Exception e) {
             log.error("Exception occurred while trying to extract span from carrier", e);

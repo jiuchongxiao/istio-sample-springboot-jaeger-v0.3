@@ -51,7 +51,6 @@ public class IstioHttpSpanInjector implements HttpSpanInjector {
             } else if (entry.getKey().equals(IstioTraceHeaderNames.SPAN_CONTEXT_HEADER)) {
                 continue;
             }
-            log.info(entry.getKey() + " : " + entry.getValue());
             carrier.put(prefixedKey(entry.getKey()), entry.getValue());
         }
     }
