@@ -31,12 +31,14 @@ spec:
       - name: service-a
         image: menghot/service-a:0.0.1
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            memory: 64Mi
         env:
         - name: JAVA_OPTS
-          value: "-Dapp.version=v1"
-        env:
-        - name: JAVA_OPTS
-          value: "-Dservice.b.url=http://service-b:8082/sb/info"
+          value: " -Xmx64m -Dservice.b.url=http://service-b:8082/sb/info -Dapp.version=v1"
         ports:
         - containerPort: 8081
 ---
@@ -72,9 +74,14 @@ spec:
       - name: service-b
         image: menghot/service-b:0.0.1
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            memory: 64Mi
         env:
         - name: JAVA_OPTS
-          value: "-Dapp.version=v1"
+          value: " -Xmx64m -Dapp.version=v1"
         ports:
         - containerPort: 8082
 ---
@@ -110,6 +117,14 @@ spec:
       - name: service-c
         image: menghot/service-c:0.0.1
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            memory: 64Mi
+        env:
+        - name: JAVA_OPTS
+          value: " -Xmx64m -Dapp.version=v1"
         ports:
         - containerPort: 8083
 ---
@@ -129,9 +144,14 @@ spec:
       - name: service-c
         image: menghot/service-c:0.0.1
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            memory: 64Mi
         env:
         - name: JAVA_OPTS
-          value: "-Dapp.version=v2"
+          value: " -Xmx64m -Dapp.version=v2"
         ports:
         - containerPort: 8083
 ---
@@ -151,9 +171,14 @@ spec:
       - name: service-c
         image: menghot/service-c:0.0.1
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            memory: 64Mi
         env:
         - name: JAVA_OPTS
-          value: "-Dapp.version=v3"
+          value: " -Xmx64m -Dapp.version=v3"
         ports:
         - containerPort: 8083
 
@@ -190,9 +215,14 @@ spec:
       - name: portal
         image: menghot/portal:v1 
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            memory: 64Mi
         env:
         - name: JAVA_OPTS
-          value: "-Dservice.a.url=http://service-a:8081/sa/info -Dservice.c.url=http://service-c:8083/sc/info"
+          value: " -Xmx64m -Dservice.a.url=http://service-a:8081/sa/info -Dservice.c.url=http://service-c:8083/sc/info"
         ports:
         - containerPort: 8080
 
