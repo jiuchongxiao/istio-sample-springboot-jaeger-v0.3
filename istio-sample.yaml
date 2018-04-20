@@ -33,7 +33,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 200Mi
+            memory: 128Mi
           requests:
             memory: 64Mi
         env:
@@ -76,7 +76,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 200Mi
+            memory: 128Mi
           requests:
             memory: 64Mi
         env:
@@ -119,7 +119,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 200Mi
+            memory: 128Mi
           requests:
             memory: 64Mi
         env:
@@ -146,7 +146,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 200Mi
+            memory: 128Mi
           requests:
             memory: 64Mi
         env:
@@ -173,7 +173,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 200Mi
+            memory: 128Mi
           requests:
             memory: 64Mi
         env:
@@ -217,7 +217,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 200Mi
+            memory: 128Mi
           requests:
             memory: 64Mi
         env:
