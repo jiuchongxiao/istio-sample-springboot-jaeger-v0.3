@@ -72,8 +72,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--<username>menghot</username>-->
-                    <!--<password>Juan\$520</password>-->
                     <repository>menghot/${project.build.finalName}</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
