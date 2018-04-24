@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ExternalService
+metadata:
+  name: httpbin-ext
+spec:
+  hosts:
+  - httpbin.org
+  ports:
+  - number: 80
+    name: http
+    protocol: http
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: ExternalService
+metadata:
+  name: baidu-ext
+spec:
+  hosts:
+  - www.baidu.com
+  ports:
+  - number: 443
+    name: https
+    protocol: http
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: baidu-ext
+spec:
+  name: www.baidu.com
+  trafficPolicy:
+    tls:
+      mode: SIMPLE # initiates HTTPS when talking to www.baidu.com

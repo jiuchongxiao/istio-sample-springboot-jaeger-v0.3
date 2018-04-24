@@ -1,0 +1,25 @@
+apiVersion: "config.istio.io/v1alpha2"
+kind: EndUserAuthenticationPolicySpec
+metadata:
+  name: mmmmm 
+  namespace: default
+spec:
+  jwts:
+  - issuer: https://example.com
+    audiences:
+    - bookstore_android.apps.googleusercontent.com
+      bookstore_web.apps.googleusercontent.com
+    jwks_uri: https://example.com/.well-known/jwks.json
+---
+apiVersion: "config.istio.io/v1alpha2"
+kind: EndUserAuthenticationPolicySpecBinding
+metadata:
+  name: enduser-binding
+  namespace: default
+spec:
+  services:
+  - name: portal
+    namespace: default
+  policies:
+  - name: mmmmm
+    namespace: default

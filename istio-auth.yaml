@@ -1,0 +1,20 @@
+apiVersion: authentication.istio.io/v1alpha1
+kind: Policy
+metadata:
+  name: auth-policy-origin-jwt
+  namespace: default
+spec:
+  targets:
+  - name: productpage
+    ports:
+    - number: 9080
+  origins:
+  - jwt:
+      issuer: "https://securetoken.google.com"
+      audiences:
+      - "productpage"
+      jwksUri: "https://www.googleapis.com/oauth2/v1/certs"
+#      jwt_headers:
+#      - "x-goog-iap-jwt-assertion"
+  originIsOptional: false
+  principalBinding: USE_ORIGIN

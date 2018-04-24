@@ -33,7 +33,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         env:
@@ -76,7 +76,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         env:
@@ -119,7 +119,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         env:
@@ -146,7 +146,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         env:
@@ -173,7 +173,7 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         env:
@@ -213,11 +213,11 @@ spec:
     spec:
       containers:
       - name: portal
-        image: menghot/portal:v1 
+        image: menghot/portal:0.0.1
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         env:
