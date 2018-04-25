@@ -1,4 +1,4 @@
-apiVersion: config.istio.io/v1alpha2
+apiVersion: "config.istio.io/v1alpha2"
 kind: memquota
 metadata:
   name: handler
@@ -6,24 +6,27 @@ metadata:
 spec:
   quotas:
   - name: requestcount.quota.istio-system
-    # default rate limit is 5000qps
-    # default rate limit is 5qps
-    maxAmount: 1
+    maxAmount: 5000
     validDuration: 1s
     # The first matching override is applied.
     # A requestcount instance is checked against override dimensions.
     overrides:
-    # The following override applies to traffic from '' version v2,
-    # destined for the ratings service. The destinationVersion dimension is ignored.
+    # The following override applies to 'ratings' when
+    # the source is 'reviews'.
     - dimensions:
         destination: service-b
         source: service-a
-        sourceVersion: v1
       maxAmount: 1
+      validDuration: 1s
+    # The following override applies to 'ratings' regardless
+    # of the source.
+    - dimensions:
+        destination: service-c
+      maxAmount: 100
       validDuration: 1s
 
 ---
-apiVersion: config.istio.io/v1alpha2
+apiVersion: "config.istio.io/v1alpha2"
 kind: quota
 metadata:
   name: requestcount
@@ -34,8 +37,9 @@ spec:
     sourceVersion: source.labels["version"] | "unknown"
     destination: destination.labels["app"] | destination.service | "unknown"
     destinationVersion: destination.labels["version"] | "unknown"
+
 ---
-apiVersion: config.istio.io/v1alpha2
+apiVersion: "config.istio.io/v1alpha2"
 kind: rule
 metadata:
   name: quota
@@ -45,3 +49,33 @@ spec:
   - handler: handler.memquota
     instances:
     - requestcount.quota
+---
+apiVersion: config.istio.io/v1alpha2
+kind: QuotaSpec
+metadata:
+  creationTimestamp: null
+  name: request-count
+  namespace: istio-system
+spec:
+  rules:
+  - quotas:
+    - charge: 1
+      quota: RequestCount
+---
+apiVersion: config.istio.io/v1alpha2
+kind: QuotaSpecBinding
+metadata:
+  creationTimestamp: null
+  name: request-count
+  namespace: istio-system
+spec:
+  quotaSpecs:
+  - name: request-count
+    namespace: istio-system
+  services:
+  - name: service-a
+  - name: service-b
+  - name: service-c
+  - name: portal
+
+

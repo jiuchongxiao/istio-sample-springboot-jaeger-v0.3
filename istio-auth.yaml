@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   targets:
-  - name: productpage
+  - name: portal
     ports:
     - number: 9080
   origins:
