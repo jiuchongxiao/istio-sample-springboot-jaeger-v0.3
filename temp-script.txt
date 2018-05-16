@@ -1,4 +1,4 @@
-docker rmi  $(docker images | grep -v 0.0.1 | grep -E 'portal|service-' | awk '{print $1":"$2}')
+docker rmi  $(docker images | grep -v 0.02 | grep -E 'portal|service-' | awk '{print $1":"$2}')
 docker rmi $(docker images | grep -E 'none' | awk '{print $3}')
 
 docker images | grep 192 | awk '{print "docker push " $1":"$2}' | sh -

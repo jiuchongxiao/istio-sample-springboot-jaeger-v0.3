@@ -14,7 +14,7 @@
     <groupId>com.xmm.sample</groupId>
     <artifactId>istio-sample</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.02</version>
 
     <properties>
         <java.version>1.8</java.version>
@@ -26,12 +26,12 @@
     </properties>
 
     <modules>
-        <module>istio-zipkin-support</module>
+        <!--<module>istio-jaeger-support</module>-->
         <module>service-a</module>
         <module>service-b</module>
         <module>service-c</module>
         <module>portal</module>
-        <module>openidconnecttest</module>
+        <!--<module>openidconnecttest</module>-->
     </modules>
 
     <dependencyManagement>
@@ -43,12 +43,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>com.xmm.sample</groupId>
-                <artifactId>istio-zipkin-support</artifactId>
-                <version>0.0.1</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 

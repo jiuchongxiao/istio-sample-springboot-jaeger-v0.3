@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: service-a
-        image: menghot/service-a:0.0.1
+        image: dinfo.cn/jiabao/service-a:0.02
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -72,7 +72,7 @@ spec:
     spec:
       containers:
       - name: service-b
-        image: menghot/service-b:0.0.1
+        image: dinfo.cn/jiabao/service-b:0.02
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -115,7 +115,7 @@ spec:
     spec:
       containers:
       - name: service-c
-        image: menghot/service-c:0.0.1
+        image: dinfo.cn/jiabao/service-c:0.02
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -142,7 +142,7 @@ spec:
     spec:
       containers:
       - name: service-c
-        image: menghot/service-c:0.0.1
+        image: dinfo.cn/jiabao/service-c:0.02
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -169,7 +169,7 @@ spec:
     spec:
       containers:
       - name: service-c
-        image: menghot/service-c:0.0.1
+        image: dinfo.cn/jiabao/service-c:0.02
         imagePullPolicy: IfNotPresent
         resources:
           limits:
@@ -213,7 +213,7 @@ spec:
     spec:
       containers:
       - name: portal
-        image: menghot/portal:0.0.1
+        image: dinfo.cn/jiabao/portal:0.02
         imagePullPolicy: IfNotPresent
         resources:
           limits:
