@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by rayt on 6/18/17.
+ * Created by ljb on 16/5/18.
  */
 public class IstioHeaderPropagatoinRequestFilter extends HeaderPropagationRequestFilter {
     private static List<String> HEADERS = Arrays.asList(

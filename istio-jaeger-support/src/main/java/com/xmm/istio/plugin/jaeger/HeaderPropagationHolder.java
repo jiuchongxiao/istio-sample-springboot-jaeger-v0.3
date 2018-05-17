@@ -16,7 +16,7 @@ package com.xmm.istio.plugin.jaeger;
 import java.util.*;
 
 /**
- * Created by rayt on 6/18/17.
+ * Created by ljb on 16/5/18.
  */
 public final class HeaderPropagationHolder {
     private static final ThreadLocal<Map<String, String>> headers = ThreadLocal.withInitial(() -> {

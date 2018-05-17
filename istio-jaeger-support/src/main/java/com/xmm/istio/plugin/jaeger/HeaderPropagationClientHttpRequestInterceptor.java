@@ -27,7 +27,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.Map;
 
 /**
- * Created by rayt on 6/18/17.
+ * Created by ljb on 16/5/18.
  */
 public class HeaderPropagationClientHttpRequestInterceptor implements ClientHttpRequestInterceptor {
 

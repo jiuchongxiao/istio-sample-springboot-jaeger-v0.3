@@ -17,7 +17,7 @@
 package com.xmm.istio.plugin.jaeger;
 
 /**
- * Created by rayt on 6/17/17.
+ * Created by ljb on 6/17/17.
  */
 public final class IstioTraceHeaderNames {
     public static String REQUEST_ID_HEADER = "X-Request-Id";

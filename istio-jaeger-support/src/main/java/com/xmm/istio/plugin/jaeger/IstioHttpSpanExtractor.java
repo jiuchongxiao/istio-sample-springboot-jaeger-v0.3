@@ -26,7 +26,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.Map;
 
 /**
- * Created by rayt on 6/17/17.
+ * Created by ljb on 6/17/17.
  */
 public class IstioHttpSpanExtractor implements HttpSpanExtractor {
     static final String URI_HEADER = "X-Span-Uri";

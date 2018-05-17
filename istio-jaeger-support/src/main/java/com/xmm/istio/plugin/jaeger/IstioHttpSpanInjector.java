@@ -27,7 +27,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.Map;
 
 /**
- * Created by rayt on 6/17/17.
+ * Created by ljb on 6/17/17.
  */
 public class IstioHttpSpanInjector implements HttpSpanInjector {
     private static final String HEADER_DELIMITER = "-";
