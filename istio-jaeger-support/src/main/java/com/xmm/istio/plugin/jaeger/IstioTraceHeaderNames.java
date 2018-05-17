@@ -14,7 +14,7 @@
 
 // TODO: High-level file comment.
 
-package com.xmm.istio.plugin.zipkin;
+package com.xmm.istio.plugin.jaeger;
 
 /**
  * Created by rayt on 6/17/17.

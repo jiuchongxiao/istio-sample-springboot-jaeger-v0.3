@@ -14,7 +14,7 @@
 
 // TODO: High-level file comment.
 
-package com.xmm.istio.plugin.zipkin;
+package com.xmm.istio.plugin.jaeger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
