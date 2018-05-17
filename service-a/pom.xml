@@ -5,14 +5,14 @@
     <parent>
         <artifactId>istio-sample</artifactId>
         <groupId>com.xmm.sample</groupId>
-        <version>0.0.1</version>
+        <version>0.0.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>service-a</artifactId>
 
     <properties>
         <start-class>com.xmm.sample.servicea.App</start-class>
-        <docker.image.prefix>192.168.43.50</docker.image.prefix>
+        <docker.image.prefix>dinfo.cn/jiabao</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -34,7 +34,7 @@
 
         <dependency>
             <groupId>com.xmm.sample</groupId>
-            <artifactId>istio-zipkin-support</artifactId>
+            <artifactId>istio-jaeger-support</artifactId>
         </dependency>
 
     </dependencies>
@@ -61,7 +61,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>menghot/${project.build.finalName}</repository>
+                    <repository>${docker.image.prefix}/${project.build.finalName}</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>

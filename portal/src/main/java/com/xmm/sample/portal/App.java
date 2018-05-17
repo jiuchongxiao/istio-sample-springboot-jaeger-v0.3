@@ -1,7 +1,7 @@
 package com.xmm.sample.portal;
 
-import com.xmm.istio.plugin.zipkin.IstioHttpSpanExtractor;
-import com.xmm.istio.plugin.zipkin.IstioHttpSpanInjector;
+import com.xmm.istio.plugin.jaeger.IstioHttpSpanExtractor;
+import com.xmm.istio.plugin.jaeger.IstioHttpSpanInjector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by simon (simon.meng@fox.mal.com) on 17/04/2018.
+ * Created by ljb on 17/5/18.
  */
 @EnableAutoConfiguration
 @SpringBootApplication

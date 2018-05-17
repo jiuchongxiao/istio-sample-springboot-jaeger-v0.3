@@ -7,7 +7,7 @@
     </formats>
     <files>
         <file>
-            <source>target/service-a-0.0.1.jar</source>
+            <source>target/service-a-0.0.3.jar</source>
             <outputDirectory>target/docker/service-a</outputDirectory>
             <!--<filtered>true</filtered>-->
         </file>
