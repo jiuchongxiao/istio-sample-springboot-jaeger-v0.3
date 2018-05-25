@@ -1,5 +1,6 @@
 package com.xmm.sample.serviceb;
 
+import org.fluentd.logger.FluentLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ import java.util.List;
 @RestController
 public class ServiceController {
 
-    private static final Logger log = LoggerFactory.getLogger(ServiceController.class);
+//    private static FluentLogger log = FluentLogger.getLogger("service-b.ServiceController","192.168.181.99",30224);
+    private static FluentLogger log = FluentLogger.getLogger("service-b.ServiceController","fluentd-es.logging",24224);
 
     @Value("${app.version}")
     private String version;
@@ -36,7 +38,7 @@ public class ServiceController {
     public String info() {
 
         String version =  " B Service version = " + this.version;
-        log.info(version);
+        log.log("info","info","version");
         return version;
     }
 

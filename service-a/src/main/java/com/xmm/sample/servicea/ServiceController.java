@@ -1,5 +1,6 @@
 package com.xmm.sample.servicea;
 
+import org.fluentd.logger.FluentLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,10 @@ import java.util.List;
  */
 @RestController
 public class ServiceController {
-
-    private static final Logger log = LoggerFactory.getLogger(ServiceController.class);
+    //定义log 指向fluent remote地址，不指定则默认为本地
+//    private static FluentLogger log = FluentLogger.getLogger("service-a.ServiceController","192.168.181.99",30224);
+    //istio 线上配置
+    private static FluentLogger log = FluentLogger.getLogger("service-a.ServiceController","fluentd-es.logging",24224);
 
     @Autowired
     private RestTemplate restTemplate;
@@ -37,43 +40,14 @@ public class ServiceController {
     @GetMapping("/info")
     public String info() {
         String rsp = "A Service version = " + this.version + "  ===> " + notify(url);
-        log.info(rsp);
+        log.log("info","data",rsp);
         return rsp;
     }
-    private static void extractHeader(HttpHeaders headers, HttpHeaders extracted, String key) {
-        List<String> vals = headers.get(key);
-        if (vals != null && !vals.isEmpty()) {
-            extracted.put(key, Arrays.asList(vals.get(0)));
-        }
-    }
-    /*@GetMapping("/info")
-    public String info(@RequestHeader HttpHeaders headers) {
-        HttpHeaders tracingHeaders = new HttpHeaders();
-        extractHeader(headers, tracingHeaders, "x-request-id");
-        extractHeader(headers, tracingHeaders, "x-b3-traceid");
-        extractHeader(headers, tracingHeaders, "x-b3-spanid");
-        extractHeader(headers, tracingHeaders, "x-b3-parentspanid");
-        extractHeader(headers, tracingHeaders, "x-b3-sampled");
-        extractHeader(headers, tracingHeaders, "x-b3-flags");
-        extractHeader(headers, tracingHeaders, "x-ot-span-context");
-        List<String> v = tracingHeaders.get("x-b3-spanid");
-        if(v !=null && !v.isEmpty()) {
-            tracingHeaders.put("x-b3-parentspanid", Arrays.asList(v.get(0)));
-        }
-        ResponseEntity<String> response = restTemplate
-                .exchange(url, HttpMethod.GET, new HttpEntity<>(tracingHeaders), String.class);
-
-        return headers.get("x-b3-traceid")+"==="+headers.get("x-b3-parentspanid")+"==="+headers.get("x-b3-spanid")+" A Service version =  "+this.version+"===========>" + response.getBody();
-
-//        String rsp = "A Service version = " + this.version + "  ===> " + notify(url);
-//        log.info(rsp);
-//        return rsp;
-    }*/
-
     public String notify(String url) {
         try {
             return restTemplate.getForObject(url, String.class);
         } catch (RestClientException e) {
+            log.log("notify","error",e.getMessage());
             return e.getMessage();
         }
 

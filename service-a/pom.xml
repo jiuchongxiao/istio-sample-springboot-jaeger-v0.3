@@ -38,11 +38,11 @@
         </dependency>
 
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.fluentd</groupId>
             <artifactId>fluent-logger</artifactId>
             <version>0.3.3</version>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
 
