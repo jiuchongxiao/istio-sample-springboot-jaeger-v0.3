@@ -1,5 +1,8 @@
 package com.xmm.sample.servicec;
 
+import com.dinfo.common.fluent.process.ControllerProcessAop;
+import com.dinfo.common.fluent.process.DaoProcessAop;
+import com.dinfo.common.fluent.process.ServiceProcessAop;
 import com.xmm.istio.plugin.jaeger.IstioHttpSpanExtractor;
 import com.xmm.istio.plugin.jaeger.IstioHttpSpanInjector;
 import org.springframework.boot.SpringApplication;
@@ -8,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.sleuth.instrument.web.HttpSpanExtractor;
 import org.springframework.cloud.sleuth.instrument.web.HttpSpanInjector;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -15,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @EnableAutoConfiguration
 @SpringBootApplication
+@Import({ControllerProcessAop.class, DaoProcessAop.class, ServiceProcessAop.class})
 public class App {
 
     /**

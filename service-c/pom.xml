@@ -25,30 +25,22 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-log4j2</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.xmm.sample</groupId>
             <artifactId>istio-jaeger-support</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-sleuth</artifactId>-->
-            <!--<version>1.3.3.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-sleuth-core</artifactId>-->
-            <!--<version>1.3.3.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-commons</artifactId>-->
-            <!--<version>1.3.3.RELEASE</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.dinfo.common</groupId>
+            <artifactId>dinfo-common</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+
 
     </dependencies>
     <build>
